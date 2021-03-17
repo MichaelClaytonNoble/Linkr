@@ -9,6 +9,10 @@ const passport = require('passport');
 const path = require('path');
 const image = require('./routes/api/image');
 
+//socket 
+// const p2p = require('socket.io-p2p-server').Server(app); //try createServer
+// const io = require('socket.io')(server);
+// io.use(p2p);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));

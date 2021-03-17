@@ -65,16 +65,15 @@ class MyProfile extends React.Component{
   }
 
   handleSubmit(e) {
-
     e.preventDefault();
     
     Object.keys(this.state).forEach(field =>{
       if (this.state[field] === '' ){
         this.state[field] = this.props.self[field]
-
       }
     })
-    if (this.state.imageFile !== '') {
+
+    if (this.state.imageFile) {
       const image = new FormData();
       image.append('image', this.state.imageFile);
       this.props.uploadImage(image).then((res) => {
