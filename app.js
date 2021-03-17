@@ -49,7 +49,8 @@ const port1 = process.env.PORT || 4001;
 const chat = require('./routes/api/chat')
 
 app.use('/api/chat', chat)
+
 io.on('connection', () => {
     console.log('connected?')
 })
-server.listen(4000);
+server.listen(port1);
