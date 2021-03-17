@@ -9,10 +9,8 @@ const passport = require('passport');
 const path = require('path');
 const image = require('./routes/api/image');
 
-//socket 
-// const p2p = require('socket.io-p2p-server').Server(app); //try createServer
-// const io = require('socket.io')(server);
-// io.use(p2p);
+
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
@@ -41,3 +39,14 @@ app.use('/api/image', image);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => (`Server is running on port ${port}`));
+
+
+//socket 
+const server = require('http').createServer(function(req,res){
+    res.end('test')
+});
+const io = require('socket.io')(server);
+io.on('connection', () => {
+    console.log('connected?')
+})
+server.listen(4000);
