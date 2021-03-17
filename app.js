@@ -42,10 +42,13 @@ app.listen(port, () => (`Server is running on port ${port}`));
 
 
 //socket 
-const server = require('http').createServer(function(req,res){
-    res.end('test')
-});
+const server = require('http').createServer(app)
 const io = require('socket.io')(server);
+
+const port1 = process.env.PORT || 4001;
+const chat = require('./routes/api/chat')
+
+app.use('/api/chat', chat)
 io.on('connection', () => {
     console.log('connected?')
 })
